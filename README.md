@@ -1,3 +1,0 @@
-# attendance
-attendance solver
-
