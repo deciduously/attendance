@@ -32,7 +32,7 @@ Clone or download this repository.
 
 `boot dev` will start a hot-reloading development environment when invoked from within [CIDER](https://github.com/clojure-emacs/cider).
 
-`make test` will run an optimized production build at `target/`, build a release bundle at `attendance-v0.1.5/`, and create a `.zip` and a `.tar.xz` of the bundle at `release`/.  It will then eventually run the test suite.
+`make test` will run an optimized production build at `target/`, build a release bundle at `attendance-v0.1.6/`, and create a `.zip` and a `.tar.xz` of the bundle at the project root.  It will then eventually run the test suite.
 
 Use `make install` for just the build, `make bundle` to put together the release bundle, and/or `make release` to produce the compressed archives.
 ### Contributing
