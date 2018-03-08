@@ -6,8 +6,7 @@ To run, a web browser.  To develop:
 * `git`
 * [`boot`](http://boot-clj.com)
 ### Usage
-Download the [latest release](https://github.com/deciduously/attendance/releases/tag/v0.1.6) and decompress it.  Open the `index.html` file inside.  It accepts as input two CSVs, one 
-containing the roster and the other any added hours for the day.
+Download the [latest release](https://github.com/deciduously/attendance/releases/tag/v0.1.6) and decompress it.  Execute the jar by invoking `java -jar attendance-v0.2.0/attendance-v0.2.0.jar` and point your browser to `localhost:3000`.
 
 Example roster.csv:
 ```
@@ -30,9 +29,11 @@ It's also pretty specific to one setup for now.  More config options on the way 
 ### Development
 Clone or download this repository.
 
-`boot dev` will start a hot-reloading development environment when invoked from within [CIDER](https://github.com/clojure-emacs/cider).
+`boot run` will start a hot-reloading development environment.  Invoke `boot repl -c` in a new terminal and run `(start-repl)` to use a CLJS repl.
 
-`make test` will run an optimized production build at `target/`, build a release bundle at `attendance-v0.1.6/`, and create a `.zip` and a `.tar.xz` of the bundle at the project root.  It will then eventually run the test suite.
+To connect to CIDER, run `boot repl -s run` and use `M-x cider-connect` to `localhost` and the given `nREPL` port (not `9009`, this is the frontend REPL).
+
+`make test` will run an optimized production build at `target/`, build a release bundle at `attendance-v0.2.0/`, and create a `.zip` and a `.tar.xz` of the bundle at the project root.  It will then eventually run the test suite.
 
 Use `make install` for just the build, `make bundle` to put together the release bundle, and/or `make release` to produce the compressed archives.
 ### Contributing

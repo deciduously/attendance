@@ -1,4 +1,4 @@
-.PHONY: help bundle clean deps install release test
+.PHONY: help bundle clean deps release test
 
 SHELL       := /bin/bash
 export PATH := ./bin:$(PATH)
@@ -9,11 +9,12 @@ version     = $(shell grep ^version $(verfile) | sed 's/.*=//')
 atom        = "$(project)-$(version)"
 target      = target/
 readme      = README.md
+server      = "$(target)$(atom).jar"
 license     = LICENSE
 
 help:
 	@echo "version =" $(version)
-	@echo "Usage: make {bundle|clean|deps|help|install|release|test}" 1>&2 && false
+	@echo "Usage: make {bundle|clean|deps|help|release|test}" 1>&2 && false
 
 clean:
 	(rm -Rfv $(atom) $(target))
@@ -26,19 +27,14 @@ bin/boot:
 
 deps: bin/boot
 
-.installed:
-	boot build        && \
-	date > .installed
+$(server):
+	boot build
 
-install: .installed
-
-.bundled: .installed
+.bundled: $(server)
 	cp -r $(target) "$(atom)/"         && \
 	cp $(license) $(atom)              && \
 	cp $(readme) $(atom)               && \
 	cp $(verfile) $(atom)              && \
-  rm -Rfv $(atom)/js/main.out/       && \
-  rm -fv $(atom)/js/main.cljs.edn
 	date > .bundled
 
 bundle: .bundled
