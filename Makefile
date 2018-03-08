@@ -16,8 +16,8 @@ help:
 	@echo "Usage: make {bundle|clean|deps|help|install|release|test}" 1>&2 && false
 
 clean:
-	(rm -Rfv $(atom) $(release) $(target))
-	(rm -fv .installed .tested .released .bundled .trimmed)
+	(rm -Rfv $(atom) $(target))
+	(rm -fv .installed .tested .released .bundled "$(atom).zip" "$(atom).tar.xz")
 
 bin/boot:
 	(mkdir -p bin/                                                                             && \
