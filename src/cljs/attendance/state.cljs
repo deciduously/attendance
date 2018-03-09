@@ -1,5 +1,6 @@
 (ns attendance.state
-  (:require [attendance.parse :refer [roster extra]]
+  (:require ;[attendance.data :refer [mock-roster mock-extra]]
+            [attendance.parse :refer [roster extra]]
             [reagent.core :refer [atom]]
             [clojure.string :as string]))
 
@@ -136,3 +137,7 @@
                               #(refresh-roster! (.-result reader))
                               #(refresh-extra! (.-result reader))))
     (.readAsText reader file)))
+
+;(defn mock-data!
+;  (refresh-roster! mock-roster)
+; (refresh-extra! mock-extra))
