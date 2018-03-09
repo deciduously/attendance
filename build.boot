@@ -25,7 +25,7 @@
 (require '[adzerk.boot-cljs :refer [cljs]]
          ;'[pandeiro.boot-http :refer [serve]]
          '[adzerk.boot-reload :refer [reload]]
-         '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]]
+         '[adzerk.boot-cljs-repl :refer [cljs-repl-env start-repl]]
          'attendance.core)
 
 (deftask run
@@ -36,8 +36,8 @@
      (attendance.core/dev-main))
    (watch)
    (reload :asset-path "public")
-   (cljs-repl :nrepl-opts {:port 9009})
-   (cljs :source-map true :optimizations :none :compiler-options {:asset-path "main.out"})
+   (cljs-repl-env)
+   (cljs :source-map true :optimizations :none :compiler-options {:asset-path "js/main.out"})
    (target :dir #{"target"})))
 
 (deftask build
