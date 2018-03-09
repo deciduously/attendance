@@ -41,12 +41,13 @@ bundle: .bundled
 
 .released: .bundled
 	zip -r "$(atom).zip" $(atom)                        && \
-	tar -cf - $(atom) | xz -9e -c - > "$(atom).tar.xz"
+	tar -cf - $(atom) | xz -9e -c - > "$(atom).tar.xz"  && \
 	date > .released
 
 release: .released
 
 .tested: clean .released
-	@echo "Not yet!"
+	@echo "Not yet!" && \
+	date > .tested
 
 test: .tested

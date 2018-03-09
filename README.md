@@ -1,10 +1,9 @@
 # Attendance
 Attendance solver in Reagent.  No network connection required.
 ### Requirements
-To run, a web browser.  To develop:
-* `java`
+* `java` 8+
 * `git`
-* [`boot`](http://boot-clj.com)
+If you want to interact with the code you will also need [`boot`](http://boot-clj.com), which can be obtained by running `make deps`.
 ### Usage
 Download the [latest release](https://github.com/deciduously/attendance/releases/tag/v0.1.6) and decompress it.  Execute the jar by invoking `java -jar attendance-v0.2.0/attendance-v0.2.0.jar` and point your browser to `localhost:3000`.
 
