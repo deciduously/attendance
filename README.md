@@ -3,11 +3,14 @@ Attendance solver in Reagent.  No network connection required.
 ### Requirements
 * `java` 8+
 * `git`
+
 If you want to interact with the code you will also need [`boot`](http://boot-clj.com), which can be obtained by running `make deps`.
 ### Usage
-Download the [latest release](https://github.com/deciduously/attendance/releases/tag/v0.1.6) and decompress it.  Execute the jar by invoking `java -jar attendance-v0.2.0/attendance-v0.2.0.jar` and point your browser to `localhost:3000`.
-
-Example roster.csv:
+Download the [latest release](https://github.com/deciduously/attendance/releases/tag/v0.2.0) and decompress it.  Execute the jar by invoking `java -jar attendance-v0.2.0/attendance-v0.2.0.jar` and point your browser to `localhost:3000`.  It uses `version.properties` for the version number and reads the following environment variables, given with their defaults:
+```shell
+PORT=3000
+```
+Example roster.csv input:
 ```
 A,7,Name One,Name Two,Name Three,,,,
 B,9,Name Four,Name Five,Name Six,,,,
@@ -15,7 +18,7 @@ CE,4,Name Two,,,,,,
 ```
 Trailing commas result from our use of MS Excel to export the roster, and are ignored.
 
-Example extra.csv:
+Example extra.csv input:
 ```
 Name One,1-4
 Name Two,4-6
