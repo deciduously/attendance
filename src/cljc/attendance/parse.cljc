@@ -4,6 +4,12 @@
 
 (def test-core #(= 1 (count (first %))))
 
+(defn parse-csv
+  "Parse CSV string data into Clojure data structure"
+  [string]
+  (->> (string/split-lines string)
+       (map #(string/split % #","))))
+
 (defn kid-record
   "Create a record from a name"
   [name]
@@ -13,7 +19,8 @@
   "Parse vector of string fields into room map"
   [fields]
   {:letter (first fields)
-   :max (-> (second fields) js/parseInt)
+   :max (-> (second fields) #?(:clj Integer/parseInt
+                               :cljs js/parseInt))
    :enrolled (into [] (map hash (drop 2 fields)))
    :collected false})
 
@@ -24,7 +31,8 @@
   (> (-> hour-string
          (string/split #"-")
          second
-         js/parseInt)
+         #?(:clj (Integer/parseInt)
+            :cljs js/parseInt))
      4))
 
 (defn parse-extra
@@ -33,12 +41,6 @@
   (let [idx (-> fields first hash)]
     {:idx idx
      :extended (-> fields second parse-extra-hours)}))
-
-(defn parse-csv
-  "Parse CSV string data into Clojure data structure"
-  [string]
-  (->> (string/split-lines string)
-       (map #(string/split % #","))))
 
 (defn kids
   "Pull just the kids, swapping for respective maps"
