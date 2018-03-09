@@ -23,7 +23,7 @@ Example extra.csv input:
 Name One,1-4
 Name Two,4-6
 ```
-Larger mock rosters that more closely approximate real world use are available at [resource/data/mock_roster.csv](https://github.com/deciduously/attendance/blob/master/resource/data/mock_roster.csv) and [mock_extra.csv](https://github.com/deciduously/attendance/blob/master/resource/data/mock_extra.csv).
+Larger mock rosters that more closely approximate real world use are available at [resources/public/data/mock_roster.csv](https://github.com/deciduously/attendance/blob/master/resources/public/data/mock_roster.csv) and [mock_extra.csv](https://github.com/deciduously/attendance/blob/master/resources/public/data/mock_extra.csv).
 ### Caveats
 The app currently cannot handle name collisions, and it's not a high priority as we currently have none in real world use.  The extra hours are only used for the generated report - any name with a time block that goes over 4 (e.g. 4-6, not 1-4) will be added to the corresponding Extended Day class.
 
