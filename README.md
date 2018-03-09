@@ -29,9 +29,7 @@ It's also pretty specific to one setup for now.  More config options on the way 
 ### Development
 Clone or download this repository.
 
-`boot run` will start a hot-reloading development environment.  Invoke `boot repl -c` in a new terminal and run `(start-repl)` to use a CLJS repl.
-
-To connect to CIDER, run `boot repl -s run` and use `M-x cider-connect` to `localhost` and the given `nREPL` port (not `9009`, this is the frontend REPL).
+`boot run` leans on `cljs-repl-env` to facilitate use with Emacs/CIDER.  Use `M-x cider-jack-in-clojurescript`, and call the task with a future: `(def p (future (boot (run))))`.  Once this loads you can invoke `(start-repl)` in the boot REPL buffer and connect your browser's devtools at `localhost:3000`.  Make sure you're hooked up with something like `(js/alert "Hello from Emacs!")`.
 
 `make test` will run an optimized production build at `target/`, build a release bundle at `attendance-v0.2.0/`, and create a `.zip` and a `.tar.xz` of the bundle at the project root.  It will then eventually run the test suite.
 
