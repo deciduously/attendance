@@ -7,11 +7,11 @@ project     = attendance
 verfile     = version.properties
 version     = $(shell grep ^version $(verfile) | sed 's/.*=//')
 atom        = "$(project)-$(version)"
-target      = target/
-artifacts   = static/js/main.out/
-frontend    = static/js/main.js
+frontend    = frontend/js/main.js
+index       = static/index.html
+css         = static/css/
+server      = target/release/attendance
 readme      = README.md
-server      = "$(target)$(atom).jar"
 license     = LICENSE
 
 help:
@@ -19,8 +19,9 @@ help:
 	@echo "Usage: make {bundle|clean|deps|help|release|run|test}" 1>&2 && false
 
 clean:
-	(rm -Rfv $(atom) $(artifacts) out/)
-	(rm -fv .installed .tested .released .bundled $(frontend) "$(atom).zip" "$(atom).tar.xz")
+	(cargo clean)
+	(rm -Rfv $(atom) frontend/ out/)
+	(rm -fv .installed .tested .released .bundled "$(atom).zip" "$(atom).tar.xz")
 
 bin/boot:
 	(mkdir -p bin/                                                                             && \
@@ -32,11 +33,18 @@ deps: bin/boot
 $(frontend):
 	boot build
 
-.bundled: $(frontend)
-	cp -r $(target) "$(atom)/"         && \
-	cp $(license) $(atom)              && \
-	cp $(readme) $(atom)               && \
-	cp $(verfile) $(atom)              && \
+$(server):
+	cargo build --release
+
+.bundled: $(frontend) $(server)
+	mkdir -p "$(atom)/static/js"               && \
+	cp $(server) $(atom)                       && \
+	cp --parents $(index) $(atom)              && \
+	cp -r --parents $(css) $(atom)             && \
+	cp $(frontend) "$(atom)/static/js/main.js" && \
+	cp $(license) $(atom)                      && \
+	cp $(readme) $(atom)                       && \
+	cp $(verfile) $(atom)                      && \
 	date > .bundled
 
 bundle: .bundled

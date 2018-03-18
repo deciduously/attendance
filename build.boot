@@ -69,4 +69,4 @@
   []
   (comp
    (cljs :optimizations :advanced)
-   (target :dir #{"static"})))
+   (target :dir #{"frontend"})))

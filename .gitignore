@@ -5,3 +5,10 @@
 **/.#*
 **/*.xlsx
 **/*.js
+*.tar.xz
+*.zip
+.bundled
+.released
+.tested
+/frontend/
+/attendance-*
