@@ -1,0 +1,7 @@
+**/main.out/
+/target/
+**/*.rs.bk
+**/.nrepl*
+**/.#*
+**/*.xlsx
+**/*.js

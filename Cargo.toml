@@ -1,0 +1,8 @@
+[package]
+name = "attendance"
+version = "0.3.0"
+authors = ["deciduously <github@deciduously.com>"]
+
+[dependencies]
+rocket = "0.3.6"
+rocket_codegen = "0.3.6"
