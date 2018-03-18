@@ -12,3 +12,4 @@
 .tested
 /frontend/
 /attendance-*
+*.sqlite
