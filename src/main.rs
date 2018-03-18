@@ -13,5 +13,8 @@ mod handler;
 use handler::*;
 
 fn main() {
-    rocket::ignite().manage(db::init_pool()).mount("/", routes![index, mock_roster, mock_extra, files]).launch();
+    rocket::ignite()
+        .manage(db::init_pool())
+        .mount("/", routes![index, mock, files])
+        .launch();
 }
