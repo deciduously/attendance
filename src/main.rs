@@ -2,6 +2,10 @@
 #![plugin(rocket_codegen)]
 
 extern crate rocket;
+#[macro_use] extern crate diesel;
+extern crate r2d2_diesel;
+extern crate r2d2;
+#[macro_use] extern crate dotenv_codegen;
 
 use std::fs::File;
 use std::io;
@@ -10,6 +14,8 @@ use std::io::prelude::*;
 use std::path::{Path, PathBuf};
 
 use rocket::response::NamedFile;
+
+mod db;
 
 #[get("/")]
 fn index() -> io::Result<NamedFile> {
@@ -41,5 +47,5 @@ fn files(file: PathBuf) -> Option<NamedFile> {
 }
 
 fn main() {
-    rocket::ignite().mount("/", routes![index, mock_roster, mock_extra, files]).launch();
+    rocket::ignite().manage(db::init_pool()).mount("/", routes![index, mock_roster, mock_extra, files]).launch();
 }
