@@ -1,5 +1,7 @@
 # Attendance
-Full-stack attendance-taking app in Clojure/ClojureScript.  **EXPERIMENTAL** Rust backend. For now, app can be built and served by invoking `boot build && cargo run`.  The Makefile will follow, and v0.2.0 will stay up for posterity.
+Full-stack attendance-taking app in Rust and ClojureScript.
+
+**EXPERIMENTAL** Rust backend. Use `make run` to build the CLJS and run the server.  The below has not et be rewritten to reflect the backend swap.
 
 It turns out I will not have access to a server capable of running a JRE - this will be an attempt to remove runtime dependencies.  Rust seemed like a good choice.
 

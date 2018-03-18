@@ -13,6 +13,11 @@ fn index() -> io::Result<NamedFile> {
     NamedFile::open("static/index.html")
 }
 
+//#[get("/mock/roster")]
+//fn mock() -> io::Result<NamedFile> {
+//    NamedFile::open("static/data/mock_roster.csv")
+//}
+
 #[get("/<file..>")]
 fn files(file: PathBuf) -> Option<NamedFile> {
     NamedFile::open(Path::new("static/").join(file)).ok()
