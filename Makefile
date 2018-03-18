@@ -21,7 +21,7 @@ help:
 	@echo "Usage: make {bundle|clean|deps|help|release|run|test}" 1>&2 && false
 
 clean:
-	(rm -Rfv $(atom) frontend/ target/)
+	(rm -Rfv $(atom) frontend/ target/release/)
 	(rm -fv .tested .released .bundled "$(atom).zip" "$(atom).tar.xz")
 
 bin/boot:
