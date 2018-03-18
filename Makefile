@@ -10,6 +10,7 @@ atom        = "$(project)-$(version)"
 frontend    = frontend/js/main.js
 index       = static/index.html
 css         = static/css/
+favicon     = static/favicon.ico
 server      = target/release/attendance
 readme      = README.md
 license     = LICENSE
@@ -19,9 +20,8 @@ help:
 	@echo "Usage: make {bundle|clean|deps|help|release|run|test}" 1>&2 && false
 
 clean:
-	(cargo clean)
-	(rm -Rfv $(atom) frontend/ out/)
-	(rm -fv .installed .tested .released .bundled "$(atom).zip" "$(atom).tar.xz")
+	(rm -Rfv $(atom) frontend/ target/)
+	(rm -fv .tested .released .bundled "$(atom).zip" "$(atom).tar.xz")
 
 bin/boot:
 	(mkdir -p bin/                                                                             && \
@@ -41,7 +41,9 @@ $(server):
 	cp $(server) $(atom)                       && \
 	cp --parents $(index) $(atom)              && \
 	cp -r --parents $(css) $(atom)             && \
+	cp $(favicon) $(atom)                      && \
 	cp $(frontend) "$(atom)/static/js/main.js" && \
+	cp Rocket.toml $(atom)                     && \
 	cp $(license) $(atom)                      && \
 	cp $(readme) $(atom)                       && \
 	cp $(verfile) $(atom)                      && \
