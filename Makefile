@@ -11,6 +11,7 @@ frontend    = frontend/js/main.js
 index       = static/index.html
 css         = static/css/
 favicon     = static/favicon.ico
+data        = static/data/
 server      = target/release/attendance
 readme      = README.md
 license     = LICENSE
@@ -41,7 +42,8 @@ $(server):
 	cp $(server) $(atom)                       && \
 	cp --parents $(index) $(atom)              && \
 	cp -r --parents $(css) $(atom)             && \
-	cp $(favicon) $(atom)                      && \
+	cp -r --parents $(data) $(atom)            && \
+	cp --parents $(favicon) $(atom)            && \
 	cp $(frontend) "$(atom)/static/js/main.js" && \
 	cp Rocket.toml $(atom)                     && \
 	cp $(license) $(atom)                      && \
