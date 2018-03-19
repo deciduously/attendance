@@ -5,7 +5,7 @@ This app requires Linux and an HTML5-enabled web browser.  Cross-compiling hsn't
 
 If you want to interact with the code you will also need `git`, `make`, [`rust`](https://rust-lang.org), a Java 8+ JRE, and [`boot`](http://boot-clj.com), which can be obtained by running `make deps`.  The fastest way to obtain a Rust installation is via [`rustup`](https://www.rustup.rs).
 ### Usage
-Download the [latest release](https://github.com/deciduously/attendance/releases/tag/v0.3.1) and decompress it.  Run the executable `attendance-server` (e.g. `cd attendance-v0.3.1/ && ./attendance-server`) and point your browser to `localhost:3000` (or click the URL shown if your terminal emulator is fancy).  `Rocket.toml` can be used to set the target port and other [config options](https://rocket.rs/guide/configuration/#rockettoml).
+Download the [latest release](https://github.com/deciduously/attendance/releases/tag/v0.3.1-r1) and decompress it.  Run the executable `attendance-server` (e.g. `cd attendance-v0.3.1/ && ./attendance-server`) and point your browser to `localhost:3000` (or click the URL shown if your terminal emulator is fancy).  `Rocket.toml` can be used to set the target port and other [config options](https://rocket.rs/guide/configuration/#rockettoml).
 
 Example roster.csv input:
 ```
