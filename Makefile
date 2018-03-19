@@ -12,7 +12,7 @@ index       = static/index.html
 css         = static/css/
 favicon     = static/favicon.ico
 data        = static/data/
-server      = target/release/attendance
+server      = target/release/attendance-server
 readme      = README.md
 license     = LICENSE
 
@@ -21,8 +21,8 @@ help:
 	@echo "Usage: make {bundle|clean|deps|help|release|run|test}" 1>&2 && false
 
 clean:
-	(rm -Rfv $(atom) frontend/ target/release/)
-	(rm -fv .tested .released .bundled "$(atom).zip" "$(atom).tar.xz")
+	(rm -Rfv $(atom) frontend/ $(server))
+	(rm -fv .tested .released .bundled target/debug/attendance "$(atom).zip" "$(atom).tar.xz")
 
 bin/boot:
 	(mkdir -p bin/                                                                             && \
