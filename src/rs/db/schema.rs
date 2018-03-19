@@ -1,6 +1,6 @@
 table! {
     kids (id) {
-        id -> Nullable<Integer>,
+        id -> Integer,
         full_name -> Text,
         letter -> Text,
         mon -> Nullable<Text>,

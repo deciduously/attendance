@@ -7,6 +7,4 @@ extern crate r2d2_diesel;
 extern crate r2d2;
 
 pub mod db;
-pub mod handler;
-pub mod models;
-pub mod schema;
+pub mod handlers;
