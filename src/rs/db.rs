@@ -8,7 +8,7 @@ use rocket::{Request, State, Outcome};
 
 type Pool = r2d2::Pool<ConnectionManager<SqliteConnection>>;
 
-static DATABASE_URL: &'static str = dotenv!("DATABASE_URL");
+static DATABASE_URL: &'static str = "db.sqlite";
 
 pub fn init_pool() -> Pool {
     let manager = ConnectionManager::<SqliteConnection>::new(DATABASE_URL);
