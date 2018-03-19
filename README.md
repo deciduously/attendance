@@ -36,7 +36,7 @@ Use `make bundle` to put together the release bundle, and/or `make release` to p
 ### Libraries
 Backend:
 * [Rocket](https://rocket.rs)
-* [Diesel](http://diesel.rs/)/
+* [Diesel](http://diesel.rs/)
 * [r2d2](https://github.com/sfackler/r2d2)/[r2d2-diesel](https://github.com/diesel-rs/r2d2-diesel)
 * [dotenv](https://github.com/purpliminal/rust-dotenv)
 

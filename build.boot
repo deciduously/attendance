@@ -8,17 +8,6 @@
 
                  ;; Util
                  [com.rpl/specter "1.1.0"]
-                 ; [dk.ative/docjure "1.12.0"] ; Gotta do it from Rust now
-
-                 ;; Database
-                ; [com.h2database/h2 "1.4.196"] ; Also all Rust
-                ; [com.layerware/hugsql "0.4.8"]
-                ; [org.clojure/java.jdbc "0.7.5"]
-
-                 ;; Backend
-                ; [bidi "2.1.3"] ; You guessed it - Rust
-                ; [ring/ring-core "1.6.3"]
-                ; [ring/ring-jetty-adapter "1.6.3"]
 
                  ;; Frontend
                  [cljs-ajax "0.7.3"]
@@ -41,7 +30,6 @@
 (require '[adzerk.boot-cljs :refer [cljs]]
          '[adzerk.boot-reload :refer [reload]]
          '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]])
-         ;'[attendance.core :refer [dev-main]]
 
 (def system-env #(or (System/getenv %) %2))
 
@@ -63,7 +51,6 @@
    (cljs :source-map true :optimizations :none :compiler-options {:asset-path "js/main.out"})
    (target :dir #{"target"})))
 
-; This should be used in the pipeline to ensure Rocket can serve it properly
 (deftask build
   "Optimized bundle"
   []
