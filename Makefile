@@ -38,13 +38,14 @@ $(server):
 	cargo build --release
 
 .bundled: $(frontend) $(server)
-	cp -r frontend/ $(atom)      && \
-	rm -r "$(atom)/js/main.out/" && \
-	cp $(server) $(atom)         && \
-	cp Rocket.toml $(atom)       && \
-	cp $(license) $(atom)        && \
-	cp $(readme) $(atom)         && \
-	cp $(verfile) $(atom)        && \
+	cp -r frontend/ $(atom)       && \
+	rm -r "$(atom)/js/main.out/"  && \
+	rm "$(atom)/js/main.cljs.edn" && \
+	cp $(server) $(atom)          && \
+	cp Rocket.toml $(atom)        && \
+	cp $(license) $(atom)         && \
+	cp $(readme) $(atom)          && \
+	cp $(verfile) $(atom)         && \
 	date > .bundled
 
 bundle: .bundled
