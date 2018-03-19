@@ -38,17 +38,13 @@ $(server):
 	cargo build --release
 
 .bundled: $(frontend) $(server)
-	mkdir -p "$(atom)/static/js"               && \
-	cp $(server) $(atom)                       && \
-	cp --parents $(index) $(atom)              && \
-	cp -r --parents $(css) $(atom)             && \
-	cp -r --parents $(data) $(atom)            && \
-	cp --parents $(favicon) $(atom)            && \
-	cp $(frontend) "$(atom)/static/js/main.js" && \
-	cp Rocket.toml $(atom)                     && \
-	cp $(license) $(atom)                      && \
-	cp $(readme) $(atom)                       && \
-	cp $(verfile) $(atom)                      && \
+	cp -r frontend/ $(atom)      && \
+	rm -r "$(atom)/js/main.out/" && \
+	cp $(server) $(atom)         && \
+	cp Rocket.toml $(atom)       && \
+	cp $(license) $(atom)        && \
+	cp $(readme) $(atom)         && \
+	cp $(verfile) $(atom)        && \
 	date > .bundled
 
 bundle: .bundled
@@ -64,7 +60,10 @@ run: $(frontend)
 	cargo run
 
 .tested: clean .released
-	@echo "Not yet!" && \
+	echo "Testing Backend"  && \
+	cargo test              && \
+	echo "Testing Frontend" && \
+	echo "Not Yet"
 	date > .tested
 
 test: .tested

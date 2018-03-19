@@ -4,12 +4,17 @@
 extern crate attendance;
 extern crate rocket;
 
+#[cfg(test)] mod tests;
+
 use attendance::db;
 use attendance::handler::*;
 
-fn main() {
+fn rocket() -> rocket::Rocket {
     rocket::ignite()
         .manage(db::init_pool())
         .mount("/", routes![index, mock, files])
-        .launch();
+}
+
+fn main() {
+    rocket().launch();
 }
