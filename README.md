@@ -42,8 +42,6 @@ Backend:
 Frontend:
 * [Reagent](https://reagent-project.github.io)
 * [cljs-ajax](https://github.com/JulianBirch/cljs-ajax)
-
-Utility:
 * [specter](https://github.com/nathanmarz/specter)
 ### Contributing
 Sure!  Open a PR.
