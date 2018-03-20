@@ -13,7 +13,7 @@ use attendance::handlers::*;
 fn rocket() -> rocket::Rocket {
     rocket::ignite()
         .manage(init_pool())
-        .mount("/", routes![index, mock, files])
+        .mount("/", routes![index, mock, upload, files])
 }
 
 fn main() {
