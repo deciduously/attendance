@@ -6,5 +6,6 @@ extern crate rocket;
 extern crate r2d2_diesel;
 extern crate r2d2;
 
+pub mod csv;
 pub mod db;
 pub mod handlers;

@@ -2,7 +2,7 @@
   (:require [attendance.parse :refer [roster extra]]
             [reagent.core :refer [atom]]
             [clojure.string :as string]
-            [ajax.core :refer [GET]]))
+            [ajax.core :refer [GET POST]]))
 
 ;; RAtom - maybe pass in somewhere else
 
@@ -31,7 +31,8 @@
   "Reset app state with fresh data"
   [roster-string]
   (blank-roster!)
-  (read-roster! roster-string))
+  (read-roster! roster-string)
+  (POST "/data/roster" {:body roster-string}))
 
 (defn refresh-extra!
   "Read extra hours CSV, swap into app-state"
