@@ -8,10 +8,6 @@ verfile     = version.properties
 version     = $(shell grep ^version $(verfile) | sed 's/.*=//')
 atom        = "$(project)-$(version)"
 frontend    = frontend/js/main.js
-index       = static/index.html
-css         = static/css/
-favicon     = static/favicon.ico
-data        = static/data/
 server      = target/release/attendance-server
 readme      = README.md
 license     = LICENSE
