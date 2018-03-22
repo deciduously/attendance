@@ -35,7 +35,7 @@ pub fn mock(resource: &RawStr) -> io::Result<String> {
 #[post("/data/roster", format = "text/plain", data = "<roster>")]
 pub fn upload(roster: String) -> io::Result<String> {
     println!("{}", roster);
-    Ok(String::from(roster))
+    Ok(roster)
 }
 
 //#[get("/kids")]

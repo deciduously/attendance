@@ -53,7 +53,8 @@ bundle: .bundled
 
 release: .released
 
-run: $(frontend)
+run:
+	boot build
 	cargo run
 
 .tested: clean .released

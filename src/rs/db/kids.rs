@@ -13,13 +13,13 @@ pub fn new_kid<'a>(full_name: &'a str,
     use super::schema::kids;
 
     NewKid {
-        full_name: full_name,
-        letter: letter,
-        mon: mon,
-        tue: tue,
-        wed: wed,
-        thu: thu,
-        fri: fri,
+        full_name,
+        letter,
+        mon,
+        tue,
+        wed,
+        thu,
+        fri,
     }
 
 }

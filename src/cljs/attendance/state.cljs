@@ -31,8 +31,7 @@
   "Reset app state with fresh data"
   [roster-string]
   (blank-roster!)
-  (read-roster! roster-string)
-  (POST "/data/roster" {:body roster-string}))
+  (read-roster! roster-string))
 
 (defn refresh-extra!
   "Read extra hours CSV, swap into app-state"
@@ -135,7 +134,7 @@
                  .-files
                  (aget 0))]
     (set! (.-onload reader) (if (= id "data")
-                              #(refresh-roster! (.-result reader))
+                              #(POST "/data/roster" {:body (js/FormData. (.-result reader))})
                               #(refresh-extra! (.-result reader))))
     (.readAsText reader file)))
 

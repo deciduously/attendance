@@ -1,6 +1,7 @@
 (ns attendance.ui
   (:require [attendance.report :refer [aggregate-report]]
-            [attendance.state :as s]))
+            [attendance.state :as s]
+            [ajax.core :refer [POST]]))
 
 ;; Helpers
 
