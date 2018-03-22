@@ -59,14 +59,14 @@
   "Make a formatted extended day email from an app-state"
   [state]
   (let [date (js/Date.)]
-    (str "Hi Everyone,\r\nHere are your extended day numbers for "
+    (str "Hi Everyone,\r\n\r\nHere are your extended day numbers for "
          (-> date (.toLocaleDateString js/Date))
-         ":\r\n"
+         ":\r\n\r\n"
          (->> state
               (:extended)
               (map report-extended)
               (apply str))
-         "Thanks,\r\n")))
+         "\r\nThanks,\r\n")))
 
 (defn aggregate-report
   "Concat reports"
