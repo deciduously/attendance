@@ -30,7 +30,7 @@ It's also pretty specific to one setup for now.  More config options on the way 
 ### Development
 Clone or download this repository.  Use `make run` to build the frontend and compile and launch the server.  I broke hot reloading when I switched out the Clojure backend for Rust, stay tuned.
 
-`make test` will build a release bundle at `attendance-v0.3.1/`, and create a `.zip` and a `.tar.xz` of the bundle at the project root.  It will then eventually run the test suite.
+`make test` will build a release bundle at `attendance-v0.3.1/`, and create a `.zip` and a `.tar.xz` of the bundle at the project root.  It will then run the test suite, currently just for the backend.
 
 Use `make bundle` to put together the release bundle, and/or `make release` to produce the compressed archives from that bundle.  `make clean` is also available to clear up build artifacts and old archives, and is called first by `make test`.
 ### Libraries
