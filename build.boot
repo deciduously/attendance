@@ -14,10 +14,13 @@
                  [reagent "0.8.0-alpha2"]
                 ; [re-frame "0.10.5"] ; Make this happen, this is a good opportunity
 
-                 ;; Dev tooling
+                 ;; Boot tasks
                  [adzerk/boot-cljs "2.1.4" :scope "test"]
                  [adzerk/boot-reload "0.5.2" :scope "test"]
                  [adzerk/boot-cljs-repl "0.3.3" :scope "test"]
+                 [tolitius/boot-check "0.1.9" :scope "test"]
+
+                 ;; Dev tooling
                  [cider/cider-nrepl "0.17.0-SNAPSHOT" :scope "test"]
                  [com.cemerick/piggieback "0.2.2" :scope "test"]
                  [org.clojure/tools.nrepl "0.2.13" :scope "test"]
@@ -29,7 +32,8 @@
 
 (require '[adzerk.boot-cljs :refer [cljs]]
          '[adzerk.boot-reload :refer [reload]]
-         '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]])
+         '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]]
+         '[tolitius.boot-check :as check])
 
 (def system-env #(or (System/getenv %) %2))
 
@@ -38,6 +42,13 @@
                           slurp
                           (clojure.string/split #"=")
                           second)})
+
+(deftask check-sources []
+  (comp
+   (check/with-yagni)
+   (check/with-eastwood)
+   (check/with-kibit)
+   (check/with-bikeshed)))
 
 (deftask run
   "Hot reloading dev environment with bREPL"
