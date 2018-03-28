@@ -2,10 +2,11 @@ use db::init::DbConn;
 use db::kids;
 use db::models::*;
 use db::schema::kids::dsl::*;
+use xlsx::parse_enrollment;
 use diesel::prelude::*;
 use std::fs::File;
 use std::io;
-use std::io::BufReader;
+use std::io::{BufReader, Error, ErrorKind};
 use std::io::prelude::*;
 use std::path::{Path, PathBuf};
 use rocket::http::RawStr;
@@ -31,12 +32,20 @@ pub fn mock(resource: &RawStr) -> io::Result<String> {
     Ok(contents)
 }
 
-// TODO merge roster/extra handlers
-#[post("/data/roster", format = "text/plain", data = "<roster>")]
-pub fn upload(roster: String) -> io::Result<String> {
-    println!("{}", roster);
-    Ok(roster)
+#[get("/data/enrollment")]
+pub fn enrollment() -> io::Result<String> {
+    match parse_enrollment() {
+        Ok(_r) => Ok(String::from("Success")),
+        Err(_e) => Err(Error::new(ErrorKind::InvalidInput, "oops"))
+    }
 }
+
+// TODO merge roster/extra handlers
+//#[post("/data/roster", format = "application/octet-stream", data = "<roster>")]
+//pub fn upload(roster: Data) -> io::Result<String> {
+//   let stream = roster.open();
+//    Ok(roster)
+//}
 
 //#[get("/kids")]
 //pub fn get_kids(conn: DbConn) -> QueryResult<Json<Vec<Kid>>> {

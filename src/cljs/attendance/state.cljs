@@ -137,8 +137,7 @@
                  .-files
                  (aget 0))]
     (set! (.-onload reader) (if (= id "data")
-                              #(POST "/data/roster" {:params {:message (.-result reader)}
-                                                     :format :text
+                              #(POST "/data/roster" {:body (js/FormData. (.getElementById js/document "data")) ; TODO 
                                                      :handler (fn [res] (.log js/console (str res)))
                                                      :error-handler post-error-handler})
                               #(refresh-extra! (.-result reader))))
