@@ -54,7 +54,7 @@ bundle: .bundled
 release: .released
 
 run:
-	boot build
+	boot run &
 	cargo run
 
 .tested: clean .released

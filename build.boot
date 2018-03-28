@@ -43,13 +43,11 @@
   "Hot reloading dev environment with bREPL"
   []
   (comp
-   ;(with-pass-thru _ ; use boot-http I think
-   ;  (attendance.core/dev-main)
    (watch)
    (reload)
    (cljs-repl)
    (cljs :source-map true :optimizations :none :compiler-options {:asset-path "js/main.out"})
-   (target :dir #{"target"})))
+   (target :dir #{"frontend"})))
 
 (deftask build
   "Optimized bundle"
