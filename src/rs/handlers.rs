@@ -13,14 +13,14 @@ use rocket::response::NamedFile;
 
 #[get("/")]
 pub fn index() -> io::Result<NamedFile> {
-    NamedFile::open("static/index.html")
+    NamedFile::open("frontend/index.html")
 }
 
 // This handler is temporary.  When I redesign the DB stuff this wont be useful
 #[get("/mock/<resource>")]
 pub fn mock(resource: &RawStr) -> io::Result<String> {
     let resource_path = match resource.as_str() {
-        "roster" | "extra" => format!("static/data/mock_{}.csv", resource),
+        "roster" | "extra" => format!("frontend/data/mock_{}.csv", resource),
         _ => return Ok(String::from("No such mock resource - try roster or extra"))
     };
 
@@ -60,7 +60,9 @@ pub fn upload(roster: String) -> io::Result<String> {
 //        .expect("Error saving new kid")
 //}
 
+// TODO decide how to handle static/ - should it all go in frontend like this?
+
 #[get("/<file..>", rank = 2)]
 pub fn files(file: PathBuf) -> Option<NamedFile> {
-    NamedFile::open(Path::new("static/").join(file)).ok()
+    NamedFile::open(Path::new("frontend/").join(file)).ok()
 }

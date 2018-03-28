@@ -25,7 +25,7 @@
 (defn file-console
   "Buttons for managing the roster file"
   []
-  [:div.file-console
+  [:form#file-console
    [button "console" "Load Mock Data" #(s/mock-data!)] [:br] [:br]
    "Roster: " [file-upload "data" ".csv"] [:br]
    "Extra Hours: " [file-upload "extra" ".csv"] [:br] [:br]

@@ -28,7 +28,7 @@ The extra hours are only used for the generated report - any name with a time bl
 
 It's also pretty specific to one setup for now.  More config options on the way (hopefully).
 ### Development
-Clone or download this repository.  Use `make run` to build the frontend and compile and launch the server.  I broke hot reloading when I switched out the Clojure backend for Rust, stay tuned.
+Clone or download this repository.  Use `make run` to build the frontend and compile and launch the server, with hot reloading of the frontend.  Someday, maybe the backend too!
 
 `make test` will build a release bundle at `attendance-v0.3.1/`, and create a `.zip` and a `.tar.xz` of the bundle at the project root.  It will then run the test suite, currently just for the backend.
 

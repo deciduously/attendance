@@ -126,6 +126,9 @@
 
 ;; File IO
 
+(defn post-error-handler [{:keys [status status-text]}]
+  (.log js/console (str "OH NO: " status " " status-text)))
+
 (defn handle-file
   "OnChange listener for data file input"
   [id]
@@ -134,7 +137,10 @@
                  .-files
                  (aget 0))]
     (set! (.-onload reader) (if (= id "data")
-                              #(POST "/data/roster" {:body (js/FormData. (.-result reader))})
+                              #(POST "/data/roster" {:params {:message (.-result reader)}
+                                                     :format :text
+                                                     :handler (fn [res] (.log js/console (str res)))
+                                                     :error-handler post-error-handler})
                               #(refresh-extra! (.-result reader))))
     (.readAsText reader file)))
 
@@ -144,14 +150,11 @@
 (defn mock-extra-handler [res]
   (refresh-extra! (str res)))
 
-(defn mock-error-handler [{:keys [status status-text]}]
-  (.log (js/console (str "OH NO: " status " " status-text))))
-
 (defn mock-data!
   "Grab the mock data and load it into the app-state"
   []
   (GET "/mock/roster/" {:handler mock-handler
-                        :error-handler mock-error-handler})
+                        :error-handler post-error-handler})
   (GET "/mock/extra/" {:handler mock-extra-handler
-                       :error-handler mock-error-handler}))
+                       :error-handler post-error-handler}))
 
