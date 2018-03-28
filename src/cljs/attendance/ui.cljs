@@ -29,7 +29,7 @@
    [button "console" "Load Mock Data" #(s/mock-data!)] [:br] [:br]
    "Roster: " [file-upload "data" ".csv"] [:br]
    "Extra Hours: " [file-upload "extra" ".csv"] [:br] [:br]
-   [button "console" "Check Report" #(-> (aggregate-report) js/alert)]
+   [button "console" "Check Report" #(js/alert (aggregate-report))]
    " "
    [:a.export
     {:href (str "data:application/octet-stream;charset=utf8;base64,"

@@ -22,7 +22,7 @@
   (let [outs (s/absent letter)]
     (str
      (str "Room " letter ": ")
-     (if (= 0 (count outs))
+     (if (zero? (count outs))
        "All here"
        (report-kidlist outs))
      "\r\n")))
@@ -38,13 +38,13 @@
         num-added (count added)]
     (str
      (str (first letter) ": " (+ (- (count enrolled) num-out) num-added) " ")
-     (if (= 0 num-out)
+     (if (zero? num-out)
        ""
        (str "[No: " (report-kidlist outs)))
-     (if (= 0 num-added)
+     (if (zero? num-added)
        ""
-       (str (if (> num-out 0) "; " "[") "Add: " (report-kidlist added)))
-     (if (or (> num-out 0) (> num-added 0)) "]" "") "\r\n")))
+       (str (if (pos? num-out) "; " "[") "Add: " (report-kidlist added)))
+     (if (or (pos? num-out) (pos? num-added)) "]" "") "\r\n")))
 
 ;; TODO More similar functions...
 (defn report
@@ -60,7 +60,7 @@
   [state]
   (let [date (js/Date.)]
     (str "Hi Everyone,\r\n\r\nHere are your extended day numbers for "
-         (-> date (.toLocaleDateString js/Date))
+         (.toLocaleDateString date js/Date)
          ":\r\n\r\n"
          (->> state
               (:extended)
@@ -76,7 +76,7 @@
         exts (email state)
         uncollected (s/get-uncollected)]
     (str
-     (if (> (count uncollected) 0)
+     (if (pos? (count uncollected))
        (str "Double check the following rooms:\r\n"
             (->> uncollected
                  (interpose " ")

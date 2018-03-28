@@ -7,8 +7,7 @@
 (defn parse-csv
   "Parse CSV string data into Clojure data structure"
   [string]
-  (->> (string/split-lines string)
-       (map #(string/split % #","))))
+  (map #(string/split % #",") (string/split-lines string)))
 
 (defn kid-record
   "Create a record from a name"
@@ -63,6 +62,6 @@
   "Take a csv string to prepared extra hours data structure"
   [extra-string]
   (let [raw (parse-csv extra-string)]
-    (into [] (->> raw
-                  (map parse-extra)
-                  (filter :extended))))) ;TODO keep core kids, indicate somehow
+    (vec (->> raw
+              (map parse-extra)
+              (filter :extended))))) ;TODO keep core kids, indicate somehow
